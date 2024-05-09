@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class StuffController extends AbstractController
 {
-    #[Route('/stuff', name: 'app_stuff')]
+    #[Route('/stuff', name: 'stuff')]
     public function index(): Response
     {
         return $this->render('stuff/stuff.html.twig', [
@@ -41,6 +41,16 @@ class StuffController extends AbstractController
         return new Response('Saved new stuff with id ' . $stuff->getId());
     }
 
+    #[Route('/stuff/showall', name: 'stuff_showall')]
+    public function showAllStuff(StuffRepository $stuffRepository): Response{
+    
+        $stuff = $stuffRepository->findAll();
+
+        dd($stuff);
+
+        return new Response();
+    }
+
 
     #[Route('/stuff/show/{id}', name: 'stuff_show')]
     public function showStuff(StuffRepository $stuffRepository, int $id): Response{
@@ -48,10 +58,9 @@ class StuffController extends AbstractController
         $stuff = $stuffRepository->find($id);
 
         return new Response(
-            'This is the stuff called ' .
-            $stuff->getName() . 
-            ' and its power level is ' .
-            $stuff->getPower()
+            '<h1> Stuff Name: </h1>' . $stuff->getName() . '<br>' .
+            '<h1> Power Level: </h1>' . $stuff->getPower() . '<br>' .
+            '<h1> Description: </h1>' . $stuff->getDescription()
         );
     }
 }
