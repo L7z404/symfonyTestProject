@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ApiInfoController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>/home/Junior/Documentos/proyectos/symfony-test/src/Controller/ApiInfoController.php</code></li>
+        <li>Your template at <code>/home/Junior/Documentos/proyectos/symfony-test/templates/api_info/index.html.twig</code></li>
+    </ul>
+</div>
+
+<div class="example-wrapper">
+    <h1>Data for selected pokemon</h1>
+    <p><b>ID: </b>{{data.id}}</p>
+    <p><b>Name: </b>{{data.name}}</p>
+    <p><b>Base Experience: </b>{{data.base_experience}}</p>
+    <p><b>Height: </b>{{data.height}}</p>
+    <p><b>Weight: </b>{{data.weight}}</p>
+
+</div>
+
+{% endblock %}
