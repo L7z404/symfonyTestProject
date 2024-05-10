@@ -18,14 +18,30 @@
     </ul>
 </div>
 
+{% if data %}
 <div class="example-wrapper">
-    <h1>Data for selected pokemon</h1>
+    <h2>Data for selected pokemon</h2>
     <p><b>ID: </b>{{data.id}}</p>
     <p><b>Name: </b>{{data.name}}</p>
     <p><b>Base Experience: </b>{{data.base_experience}}</p>
     <p><b>Height: </b>{{data.height}}</p>
     <p><b>Weight: </b>{{data.weight}}</p>
-
+    <a href="/api/info"><input type="button" value="Go Back"></a>
 </div>
+{% else %}
+    <div class="example-wrapper">
+        <h2>No data, please search a pokemon:</h2>
+        <input type="text" id="nameInput">
+        <input type="button" value="Load info" onclick="getInfo()">
+
+        <script>
+            function getInfo(){
+                var info=document.getElementById("nameInput").value;
+                info=info.toLowerCase();
+                window.location.href='/api/info/'+info;
+            }
+        </script>
+    </div>
+{% endif %}
 
 {% endblock %}
